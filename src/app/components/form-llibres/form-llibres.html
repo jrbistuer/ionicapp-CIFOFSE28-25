@@ -1,0 +1,48 @@
+@if (bookForm !== null && bookForm !== undefined) {
+
+  <form [formGroup]="bookForm">
+
+    <ion-item>
+      <ion-label>Títol:</ion-label>
+      <ion-input formControlName="titol"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Autor:</ion-label>
+      <ion-input formControlName="autor"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Any de publicació:</ion-label>
+      <ion-input type="number" formControlName="anyPublicacio"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Editorial:</ion-label>
+      <ion-input formControlName="editorial"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>Pàgines:</ion-label>
+      <ion-input type="number" formControlName="pagines"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label>ISBN:</ion-label>
+      <ion-input formControlName="isbn"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-button expand="full" type="button" (click)="submitBook()">Afegir llibre</ion-button>
+
+    <ion-button expand="full" type="button" (click)="submitEditBook()">Editar llibre</ion-button>
+
+  </form>
+
+}
+

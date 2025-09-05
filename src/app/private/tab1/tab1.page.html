@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+<h1>Pàgina HOME</h1>
+
+<h2>Benvingut a la pàgina de Home</h2>
+
+<a [routerLink]="['/login']">Anar a la pàgina de Login</a>
+
+<h2>Formulari de llibres</h2>
+
+<app-form-llibres (onSubmit)="submitBook($event)" [indexLlibre]="index" (onEdit)="submitEditBook($event)"></app-form-llibres>
+
+<h2>Llibres afegits:</h2>
+<ul>
+  @for (llibre of llistaLlibres; track $index) {
+    <li>{{$index}} - {{ llibre.titol }} - {{ llibre.autor }} - 
+      <span (click)="editLlibre($index)">edit</span> - 
+      <span (click)="deleteLlibre($index)">delete</span>
+    </li>
+  }
+</ul>
+
+  </ion-content>
+
+</ion-content>
