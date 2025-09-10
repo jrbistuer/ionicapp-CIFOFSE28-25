@@ -4,11 +4,32 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getMessaging, provideMessaging } from '@angular/fire/messaging';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { addIcons } from 'ionicons';
+import { logoIonic, logOutOutline } from 'ionicons/icons';
+import { environment } from './environments/environment';
 
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
-    provideRouter(routes, withPreloading(PreloadAllModules)),
+    provideRouter(
+      routes, 
+      withPreloading(PreloadAllModules)), 
+      provideFirebaseApp(() => initializeApp(environment.firebase)),
+      provideAuth(() => getAuth()), 
+      provideAnalytics(() => getAnalytics()), 
+      ScreenTrackingService, 
+      UserTrackingService, 
+      provideFirestore(() => getFirestore()), 
+      provideMessaging(() => getMessaging()), 
+      provideStorage(() => getStorage()),
   ],
 });
+
+addIcons({ logOutOutline });

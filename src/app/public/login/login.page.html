@@ -22,7 +22,7 @@
 
     <form [formGroup]="loginForm">
 
-      <ion-input label="Usuari:" formControlName="username" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+      <ion-input label="Usuari:" formControlName="email" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
 
       <br>
 
@@ -30,7 +30,8 @@
 
       <br>
 
-      <button type="button" (click)="enviarReactiveForm()">Iniciar sessió amb ReactiveForm</button>
+      <ion-button type="button" (click)="login()">Login</ion-button><br/>
+      <ion-button type="button" (click)="register()">Register</ion-button>
 
     </form>
 

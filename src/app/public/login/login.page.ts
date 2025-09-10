@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonRouterLink } from '@ionic/angular/standalone';
-import { RouterModule } from '@angular/router';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonRouterLink, LoadingController, AlertController, IonButton } from '@ionic/angular/standalone';
+import { RouterModule, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service'; // Adjust path as needed
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonInput, ReactiveFormsModule, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, RouterModule]
+  imports: [IonButton, IonInput, ReactiveFormsModule, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, RouterModule]
 })
 export class LoginPage {
 
@@ -17,7 +18,10 @@ export class LoginPage {
 
   loginForm!: FormGroup; // Define the type of loginForm if using Reactive Forms
 
-  constructor() {
+  constructor(private loadingController: LoadingController,
+		private alertController: AlertController,
+		private authService: AuthService,
+		private router: Router) {
     // Initialization logic can go here if needed
     this.createForm();
   }
@@ -48,7 +52,7 @@ export class LoginPage {
     console.log('Creating form');
     // Creating Reactive Form
     this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)
     });
   }
@@ -56,5 +60,42 @@ export class LoginPage {
   goto() {
     console.log('Navigating to Login page');
   }
+
+  async register() {
+		const loading = await this.loadingController.create();
+		await loading.present();
+
+		const user = await this.authService.register(this.loginForm.value);
+		await loading.dismiss();
+
+		if (user) {
+			this.router.navigateByUrl('/', { replaceUrl: true });
+		} else {
+			this.showAlert('Registration failed', 'Please try again!');
+		}
+	}
+
+	async login() {
+		const loading = await this.loadingController.create();
+		await loading.present();
+
+		const user = await this.authService.login(this.loginForm.value);
+		await loading.dismiss();
+
+		if (user) {
+			this.router.navigateByUrl('/', { replaceUrl: true });
+		} else {
+			this.showAlert('Login failed', 'Please try again!');
+		}
+	}
+
+	async showAlert(header: string, message: string) {
+		const alert = await this.alertController.create({
+			header,
+			message,
+			buttons: ['OK']
+		});
+		await alert.present();
+	}
 
 }
