@@ -6,4 +6,18 @@ export interface IBook {
   editorial: string;
   pagines: number;
   isbn?: string;
+  userPropietari?: string;
+}
+
+export interface IUser {
+  id?: string;
+  nom: string;
+  email: string;
+  avatar: string;
+  geolocalitzacio?: ILocalitzacio;
+}
+
+export interface ILocalitzacio {
+  lat: number;
+  lng: number;
 }
