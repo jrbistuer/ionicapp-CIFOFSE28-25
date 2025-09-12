@@ -15,15 +15,15 @@ export class FormLlibres {
   @Output() onSubmit = new EventEmitter<IBook>(); 
   @Output() onEdit = new EventEmitter<IBook>();
 
-  index: number = -1; // To track the index of the book being edited
+  mLlibre: IBook | undefined; // To track the index of the book being edited
 
-  get indexLlibre(): number {
-    return this.index;
+  get llibre(): IBook | undefined {
+    return this.mLlibre;
   }
 
-  @Input() set indexLlibre(value: number) {
-    if (value !== -1) {
-      this.index = value;
+  @Input() set llibre(llibre: IBook | undefined) {
+    if (llibre) {
+      this.mLlibre = llibre;
       this.setBookToEdit();
     }
   }
@@ -36,6 +36,7 @@ export class FormLlibres {
 
   createBookForm(): void {
     this.bookForm = new FormGroup({
+      id: new FormControl(''),
       titol: new FormControl('', [Validators.required, Validators.minLength(3)]),
       autor: new FormControl('', Validators.required),
       anyPublicacio: new FormControl(''),
@@ -46,15 +47,17 @@ export class FormLlibres {
   }
 
   setBookToEdit(): void {
-    const book = this.booksService.getBooks()[this.index];
-    this.bookForm.patchValue({
-      titol: book.titol,
-      autor: book.autor,
-      anyPublicacio: book.anyPublicacio || '',
-      editorial: book.editorial,
-      pagines: book.pagines,
-      isbn: book.isbn || ''
-    });
+    if (this.mLlibre) {
+      this.bookForm.patchValue({
+        id: this.mLlibre.id,
+        titol: this.mLlibre.titol,
+        autor: this.mLlibre.autor,
+        anyPublicacio: this.mLlibre.anyPublicacio || '',
+        editorial: this.mLlibre.editorial,
+        pagines: this.mLlibre.pagines,
+        isbn: this.mLlibre.isbn || ''
+      });
+    }
   }
 
   submitBook(): void {

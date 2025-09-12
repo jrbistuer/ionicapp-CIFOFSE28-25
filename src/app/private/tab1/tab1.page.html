@@ -28,14 +28,14 @@
 
 <h2>Formulari de llibres</h2>
 
-<app-form-llibres (onSubmit)="submitBook($event)" [indexLlibre]="index" (onEdit)="submitEditBook($event)"></app-form-llibres>
+<app-form-llibres (onSubmit)="submitBook($event)" [llibre]="llibre" (onEdit)="submitEditBook($event)"></app-form-llibres>
 
 <h2>Llibres afegits:</h2>
 <ul>
-  @for (llibre of llistaLlibres; track $index) {
+  @for (llibre of llistaLlibres$ | async; track $index) {
     <li>{{$index}} - {{ llibre.titol }} - {{ llibre.autor }} - 
-      <span (click)="editLlibre($index)">edit</span> - 
-      <span (click)="deleteLlibre($index)">delete</span>
+      <span (click)="editLlibre(llibre)">edit</span> - 
+      <span (click)="deleteLlibre(llibre)">delete</span>
     </li>
   }
 </ul>
