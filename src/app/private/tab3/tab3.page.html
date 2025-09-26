@@ -13,4 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
+  <h2>Barcode Scanner Example</h2>
+
+  <ion-button (click)="scanCode()">Scan Barcode</ion-button>
+
+  <h2>Scan Result</h2>
+  <div id="result">{{ scanResult }}</div>
+
 </ion-content>
