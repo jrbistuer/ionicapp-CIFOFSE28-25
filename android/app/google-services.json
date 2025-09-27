@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "842905270496",
+    "project_id": "cifoionic-0225",
+    "storage_bucket": "cifoionic-0225.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842905270496:android:58003b81589723269bf885",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842905270496-a6n693atrem30grknfb65qc3ssepsde1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaMacfw6B9CNrCRrVvWQGE59WyI-K_yto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842905270496-a6n693atrem30grknfb65qc3ssepsde1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
