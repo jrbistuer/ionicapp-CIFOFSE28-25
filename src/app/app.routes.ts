@@ -14,5 +14,9 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./public/login/login.page').then( m => m.LoginPage),
     ...canActivate(redirectLoggedInToHome),
+  },  {
+    path: 'tab4',
+    loadComponent: () => import('./private/tab4/tab4.page').then( m => m.Tab4Page)
   },
+
 ];

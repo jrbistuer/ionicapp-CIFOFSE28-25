@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>tab4</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">tab4</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <google-map
+    id="map"
+    width="100%"
+    height="400px"
+    [mapId]="'map-id'"
+    [center]="center"
+    [options]="options">
+    <map-advanced-marker
+  #mapMarker="mapAdvancedMarker"
+  [position]="center"
+></map-advanced-marker>
+  </google-map>
+
+<!--     <div>Latitude: {{display.lat}}</div>
+    <div>Longitude: {{display.lng}}</div> -->
+
+</ion-content>
