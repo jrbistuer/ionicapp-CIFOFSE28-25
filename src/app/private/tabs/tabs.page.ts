@@ -1,4 +1,5 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
@@ -16,11 +17,14 @@ export class TabsPage {
 
   constructor() {
     addIcons({ triangle, ellipse, square });
-    this.pushService.registerNotifications().then(() => {
-      this.pushService.addListeners();
-    }).catch(err => {
-      console.error('Error registering for push notifications', err);
-    });
+    if (Capacitor.isNativePlatform()) {
+      this.pushService.registerNotifications().then(() => {
+        this.pushService.addListeners();
+      }).catch(err => {
+        console.error('Error registering for push notifications', err);
+      });
+    }
+
   }
   
 }

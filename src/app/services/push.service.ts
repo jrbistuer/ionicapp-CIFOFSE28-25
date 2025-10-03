@@ -1,16 +1,23 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { PushNotifications } from '@capacitor/push-notifications';
+import { IUser } from '../models/interfaces';
+import { UserService } from './user.service';
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PushService {
 
+  userService: UserService = inject(UserService);
+  auth: Auth = inject(Auth);
+
   constructor() {}
 
   async addListeners() {
     await PushNotifications.addListener('registration', token => {
       console.info('Registration token: ', token.value);
+      this.updatePushToken(token.value);
     });
 
     await PushNotifications.addListener('registrationError', err => {
@@ -43,6 +50,14 @@ export class PushService {
   async getDeliveredNotifications() {
     const notificationList = await PushNotifications.getDeliveredNotifications();
     console.log('delivered notifications', notificationList);
+  }
+
+  async updatePushToken(token: string) {
+    this.userService.getUserById(this.auth.currentUser?.uid!).subscribe(user => {
+      console.log('User retrieved: ', user);
+      user!.pushToken = token;
+      this.userService.updateUser(user!);
+    });
   }
 
 }

@@ -15,6 +15,7 @@ export interface IUser {
   email: string;
   avatar: string;
   geolocalitzacio?: ILocalitzacio;
+  pushToken?: string;
 }
 
 export interface ILocalitzacio {
