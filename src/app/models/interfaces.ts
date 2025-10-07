@@ -22,3 +22,8 @@ export interface ILocalitzacio {
   lat: number;
   lng: number;
 }
+
+export interface iCoordenades {
+  latitude: number;
+  longitude: number;
+}
