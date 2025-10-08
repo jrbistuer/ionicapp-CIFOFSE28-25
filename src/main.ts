@@ -11,8 +11,10 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { addIcons } from 'ionicons';
-import { logoIonic, logOutOutline } from 'ionicons/icons';
+import { arrowBackOutline, logOutOutline } from 'ionicons/icons';
 import { environment } from './environments/environment';
+import { enableProdMode } from '@angular/core';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -32,4 +34,9 @@ bootstrapApplication(AppComponent, {
   ],
 });
 
-addIcons({ logOutOutline });
+defineCustomElements(window);
+if (environment.production) {
+  enableProdMode();
+}
+
+addIcons({ logOutOutline, arrowBackOutline });

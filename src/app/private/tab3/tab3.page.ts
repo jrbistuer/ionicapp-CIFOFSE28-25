@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
-import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarcodeScannerScanResult, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
-
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonMenuButton } from '@ionic/angular/standalone';
+/* import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarcodeScannerScanResult, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
+ */
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  imports: [IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonButtons, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton],
 })
 export class Tab3Page {
 
-  options: CapacitorBarcodeScannerOptions = {
+  /* options: CapacitorBarcodeScannerOptions = {
     hint: CapacitorBarcodeScannerTypeHint.QR_CODE,
-  };
+  }; */
   scanResult = '';
 
   constructor() {}
 
-  scanCode() {
+  /* scanCode() {
     console.log('Scanning barcode...');
     CapacitorBarcodeScanner.scanBarcode(this.options).then((result: CapacitorBarcodeScannerScanResult) => {
       console.log('Scan result:', result);
@@ -25,6 +25,6 @@ export class Tab3Page {
     }).catch(error => {
       console.error('Scan error:', error);
     });
-  }
+  } */
 
 }

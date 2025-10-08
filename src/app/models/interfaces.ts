@@ -12,6 +12,7 @@ export interface IBook {
 export interface IUser {
   id?: string;
   nom: string;
+  cognoms?: string;
   email: string;
   avatar: string;
   geolocalitzacio?: ILocalitzacio;

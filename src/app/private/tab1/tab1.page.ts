@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router, RouterModule } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonIcon } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonIcon, IonMenuButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { logoIonic, logOut, logOutOutline } from 'ionicons/icons';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ import { BooksFirestoreService } from 'src/app/services/books-firestore.service'
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonIcon, IonButtons, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, FormLlibres, RouterModule, AsyncPipe],
+  imports: [IonIcon, IonButtons, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, FormLlibres, RouterModule, AsyncPipe, IonMenuButton],
 })
 export class Tab1Page implements OnInit {
 
