@@ -12,12 +12,19 @@ export interface IBook {
 export interface IUser {
   id?: string;
   nom: string;
+  cognoms?: string;
   email: string;
   avatar: string;
   geolocalitzacio?: ILocalitzacio;
+  pushToken?: string;
 }
 
 export interface ILocalitzacio {
   lat: number;
   lng: number;
+}
+
+export interface iCoordenades {
+  latitude: number;
+  longitude: number;
 }

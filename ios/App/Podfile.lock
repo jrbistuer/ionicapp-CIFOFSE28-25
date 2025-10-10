@@ -12,6 +12,9 @@ PODS:
   - CapacitorFilesystem (7.1.4):
     - Capacitor
     - IONFilesystemLib (~> 1.0.1)
+  - CapacitorGeolocation (7.1.5):
+    - Capacitor
+    - IONGeolocationLib (= 1.0.1)
   - CapacitorHaptics (7.0.1):
     - Capacitor
   - CapacitorKeyboard (7.0.1):
@@ -23,6 +26,7 @@ PODS:
   - CapacitorStatusBar (7.0.1):
     - Capacitor
   - IONFilesystemLib (1.0.1)
+  - IONGeolocationLib (1.0.1)
   - OSBarcodeLib (2.0.1)
 
 DEPENDENCIES:
@@ -32,6 +36,7 @@ DEPENDENCIES:
   - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorGeolocation (from `../../node_modules/@capacitor/geolocation`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
   - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
@@ -41,6 +46,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - IONFilesystemLib
+    - IONGeolocationLib
     - OSBarcodeLib
 
 EXTERNAL SOURCES:
@@ -56,6 +62,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorFilesystem:
     :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorGeolocation:
+    :path: "../../node_modules/@capacitor/geolocation"
   CapacitorHaptics:
     :path: "../../node_modules/@capacitor/haptics"
   CapacitorKeyboard:
@@ -74,14 +82,16 @@ SPEC CHECKSUMS:
   CapacitorCamera: f9e54db0a18bb218a8dc360907d63aaefe9209ff
   CapacitorCordova: 5e58d04631bc5094894ac106e2bf1da18a9e6151
   CapacitorFilesystem: f9bd850c41e048180e5dc0cbb90f2033ede9d2cc
+  CapacitorGeolocation: 84f868bea4c2499aebc3bb3a88fd0a508f87ab87
   CapacitorHaptics: 1f1e17041f435d8ead9ff2a34edd592c6aa6a8d6
   CapacitorKeyboard: 09fd91dcde4f8a37313e7f11bde553ad1ed52036
   CapacitorPreferences: 65107ed7437d96ee72583df5763985e3c0ff2bc2
   CapacitorPushNotifications: bdd621fbd562be34a41f4a7b1750efa000447d5a
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
   IONFilesystemLib: 89258b8e3e85465da93127d25d7ce37f977e8a6f
+  IONGeolocationLib: 20f9d0248a0b5264511fb57a37e25dd2badf797a
   OSBarcodeLib: 57987d2eb1f916f701f4554e20e349b3cb83f023
 
-PODFILE CHECKSUM: 5480c3dda281a1546b2450908e4a59c53a180e9a
+PODFILE CHECKSUM: 0373d152bb6dc6a03b0a676e762fcfde97723b03
 
 COCOAPODS: 1.16.2

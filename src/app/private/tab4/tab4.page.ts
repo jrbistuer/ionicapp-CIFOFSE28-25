@@ -1,50 +1,68 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { Geolocation } from '@capacitor/geolocation';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/angular/standalone';
+import { MapService } from 'src/app/services/map.service';
 import {GoogleMap, MapAdvancedMarker, MapMarker} from '@angular/google-maps';
+import { iCoordenades } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
   styleUrls: ['./tab4.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, 
-    GoogleMap, MapMarker, MapAdvancedMarker]
+  imports: [IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, GoogleMap, MapAdvancedMarker, IonMenuButton]
 })
-export class Tab4Page {
+export class Tab4Page implements OnInit, OnDestroy {
 
-    title = "Tab 3 Sample";
+  mapService: MapService = inject(MapService);
 
   center: google.maps.LatLngLiteral = {
     lat: 0,
     lng: 0
   };
-  display!: google.maps.LatLngLiteral;
-  options!: google.maps.MapOptions;
-  loading?: HTMLIonLoadingElement;
+
+  options = {
+    zoom: 10
+  };
 
   constructor() { }
 
-    ionViewWillEnter() {
-      this.initMap();
-    }
-  
-    async initMap() {
-      const coordinates = await Geolocation.getCurrentPosition();
+  ngOnInit(): void {
+    console.log('Tab4Page initialized');
+  }
 
-      const location: google.maps.LatLngLiteral = {
-        lat: coordinates.coords.latitude,
-        lng: coordinates.coords.longitude
+  ionViewWillEnter() {
+    console.log('Tab4Page ionViewWillEnter');
+  }
+
+  ionViewDidEnter() {
+    console.log('Tab4Page ionViewDidEnter');
+    this.mapService.getCurrentPosition().then(position => {
+      console.log('Position in Tab4Page: ', position);
+      this.center = {
+        lat: position.latitude,
+        lng: position.longitude
       };
+    }).catch(err => {
+      console.error('Error getting position in Tab4Page: ', err);
+    });
+  }
 
-      this.center = location;
-      this.display = location;
+  ionViewWillLeave() {
+    console.log('Tab4Page ionViewWillLeave');
+  }
 
-      this.options = {
-        zoom: 10
-      };
-    }
+  ionViewDidLeave() {
+    console.log('Tab4Page ionViewDidLeave');
+  }
+
+  ngOnDestroy(): void {
+    console.log('Tab4Page destroyed');
+  }
+
+  initMap() {
+
+  }
 
 }
